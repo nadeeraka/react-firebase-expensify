@@ -5,6 +5,7 @@ class Client extends Component {
   render() {
     const client = [
       {
+        id: "123",
         firstName: "javier",
         lastName: "njk",
         email: "email",
@@ -31,25 +32,28 @@ class Client extends Component {
                   <th>Balance</th>
                 </tr>
               </thead>
-              {client.map(client => (
-                <tr key={uuid()}>
-                  <td>
-                    {client.firstName} {client.lastName}
-                  </td>
+              <tbody>
+                {client.map(client => (
+                  <tr key={uuid()}>
+                    <td>
+                      {client.firstName} {client.lastName}
+                    </td>
 
-                  <td>{client.email}</td>
-                  <td>{client.balance}</td>
-                  <td>
-                    {" "}
-                    <Link
-                      to={`client/${client.id}`}
-                      className="btn btn-secondary btn-sm"
-                    >
-                      Details
-                    </Link>
-                  </td>
-                </tr>
-              ))}
+                    <td>{client.email}</td>
+                    <td>${parseFloat(client.balance).toFixed(2)}</td>
+                    <td>
+                      {" "}
+                      <Link
+                        to={`client/${client.id}`}
+                        className="btn btn-secondary btn-sm"
+                      >
+                        <i className="fas fa-arrow-circle-right" />
+                        Details
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </div>
         </div>

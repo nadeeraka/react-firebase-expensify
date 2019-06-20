@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
+      <NavBar />
       <div className="container">
-        <NavBar />
         <Switch>
           <Route exact component={Dashboard} />
         </Switch>

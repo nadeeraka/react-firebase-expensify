@@ -4,7 +4,7 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
           <Link className="navbar-brand" to="/">
             Client
           </Link>

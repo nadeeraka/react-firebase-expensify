@@ -22,11 +22,27 @@ const fireStore = firebase.firestore();
 
 // Add reactReduxFirebase enhancer when making store creator
 const createStoreWithFirebase = compose(
-  reactReduxFirebase(firebase, rrfConfig) // firebase instance as first argument
-  // reduxFirestore(firebase) // <- needed if using firestore
+  reactReduxFirebase(firebase, rrfConfig), // firebase instance as first argument
+  reduxFirestore(firebase)
 )(createStore);
 
 const rootReducer = combineReducers({
-  firebase: firebaseReducer
-  // firestore: firestoreReducer // <- needed if using firestore
+  firebase: firebaseReducer,
+  firestore: firestoreReducer
 });
+
+const initialState = {};
+
+//create store
+
+const store = createStoreWithFirebase(
+  rootReducer,
+  initialState,
+  compose(
+    reactReduxFirebase(firebase),
+    +window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
+
+export default store;

@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
     <div>
-      <h1>Sidebar</h1>
+      <Link className="btn btn-success btn-block" to="/client/add">
+        <i className="fas fa-plus" /> Add
+      </Link>
     </div>
   );
 }
